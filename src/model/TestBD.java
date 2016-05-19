@@ -14,9 +14,11 @@ public class TestBD {
 		Connection conexion5 = Conexion5.getConexion5();
 		
 		//cogemos la ultima conexion para realizar operaciones con la BD
-		CrearTablas.crearTablaUsuario(conexion5);
-		InsertarDatos.addUsuario(conexion5, new Usuario("pepe",21));
-		InsertarDatos.addUsuario(conexion5, new Usuario("joaquin",18));
+		//CrearTablas.crearTablaUsuario(conexion5);
+		//CrearTablas.crearTrigger(conexion5);
+		//CrearTablas.crearIndices(conexion5);
+		//InsertarDatos.addUsuario(conexion5, new Usuario("pepe",21));
+		//InsertarDatos.addUsuario(conexion5, new Usuario("joaquin",18));
 		
 		List<Usuario> lista = SeleccionDatos.getTodosUsuarios(conexion5);
 		for (Usuario usuario : lista) {
@@ -34,6 +36,10 @@ public class TestBD {
 		}
 		
 		ActualizacionBorrado.borradoNombreUsuario(conexion5, "pepe");
+		
+		UsuarioDAOImpSQLite uDAO = new UsuarioDAOImpSQLite();
+		uDAO.insertarUsuarioDTO(new Usuario("jacinto",20));
+		uDAO.insertarUsuarioDTO(new Usuario("esperanza",18));
 		
 	}
 
